@@ -17,6 +17,10 @@
         "image": "itzg/minecraft-server",
         "essential": true,
         "memory": 900,
+        "environment": [{
+            "name": "EULA",
+            "value": "TRUE"
+        }],
         "portMappings": [{
             "hostPort": 25565,
             "containerPort": 25565,
