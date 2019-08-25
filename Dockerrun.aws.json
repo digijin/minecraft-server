@@ -16,7 +16,7 @@
         "name": "server",
         "image": "itzg/minecraft-server",
         "essential": true,
-        "memory": 900,
+        "memory": 1900,
         "environment": [{
             "name": "EULA",
             "value": "TRUE"
