@@ -1,0 +1,31 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "volumes": [{
+        "name": "rexray-vol",
+        "dockerVolumeConfiguration": {
+            "autoprovision": true,
+            "scope": "shared",
+            "driver": "rexray/ebs",
+            "driverOpts": {
+                "volumetype": "gp2",
+                "size": "5"
+            }
+        }
+    }],
+    "containerDefinitions": [{
+        "name": "server",
+        "image": "itzg/minecraft-server",
+        "essential": true,
+        "memory": 900,
+        "portMappings": [{
+            "hostPort": 25565,
+            "containerPort": 25565,
+            "protocol": "udp"
+        }],
+        "links": [],
+        "mountPoints": [{
+            "containerPath": "/opt/storage",
+            "sourceVolume": "rexray-vol"
+        }]
+    }]
+}

@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '8'
+services:
+- docker
+jobs:
+  include:
+    - stage: build
+      script:
+      - zip -r fac-v${TRAVIS_BUILD_NUMBER}.zip Dockerrun.aws.json .ebextensions
+      - ls
+      - node deploy.js --project=fac --packageVersion=${TRAVIS_BUILD_NUMBER} --env=myenv --accessKeyId=${AWS_KEY_ID} --secretAccessKey=${AWS_SECRET}
